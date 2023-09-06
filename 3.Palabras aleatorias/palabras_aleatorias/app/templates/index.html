@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date and Time</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+    <div class="container">
+        <h3>Random Word (attempt #{{ request.session.counter }})</h3>
+        <section class="row">
+            <div>{{request.session.ran_word}}</div>
+        </section>
+        <button class="button" type="button" onclick="refresh()">Generate</button>
+        <a href="/clear" class="button a" type="button">Clear Count</a>
+
+
+    </div>
+
+    <script>
+        
+        function refresh(){
+            location.reload();
+
+            console.log('jaja, recargamos')
+        }
+
+    </script>
+</body>
+</html>
