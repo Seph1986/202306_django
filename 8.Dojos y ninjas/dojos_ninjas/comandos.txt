@@ -1,0 +1,50 @@
+Ejecuta el shell e importe sus modelos
+    Ninja.objects.all()
+    Dojo.objects.all()
+
+Crea 3 nuevos dojos
+    Dojo.objects.create(name= "Coding", city= "Los Angeles", state= "CA")
+    Dojo.objects.create(name= "JavaScript", city= "Austing", state= "TX")
+    Dojo.objects.create(name= "C++", city= "New York", state= "NY")
+
+Elimina los 3 dojos que acaba de crear
+    to_delete= Dojo.objects.all()
+    for i in to_delete:
+...     i.delete()
+
+Crea 3 dojos mas
+    Dojo.objects.create(name= "Coding", city= "Los Angeles", state= "CA")
+    Dojo.objects.create(name= "JavaScript", city= "Austing", state= "TX")
+    Dojo.objects.create(name= "C++", city= "New York", state= "NY")
+
+ Crea 3 ninjas que pertenecen al primer dojo
+    firt_dojo = Dojo.objects.get(name= "Coding")
+     Ninja.objects.create(first_name= "Apolo", last_name= "Weber", dojo= firt_dojo)
+     Ninja.objects.create(first_name= "Ares", last_name= "Schmickler", dojo= firt_dojo)
+     Ninja.objects.create(first_name= "Micaela", last_name= "Morinigo", dojo= firt_dojo)
+
+Crea 3 ninjas que pertenecen al segundo dojo
+    second_dojo= Dojo.objects.get(name= "JavaScript")
+    Ninja.objects.create(first_name= "Pursah", last_name= "Vieira", dojo= second_dojo)
+    Ninja.objects.create(first_name= "Aurora", last_name= "Schneider", dojo= second_dojo)
+    Ninja.objects.create(first_name= "Enzo", last_name= "Hepp", dojo= second_dojo)
+
+Crea 3 ninjas que pertenecen al tercer dojo
+    third_dojo = Dojo.objects.get(name= "C++")
+    Ninja.objects.create(first_name= "Hana", last_name= "Martinez", dojo= third_dojo)
+    Ninja.objects.create(first_name= "Kim", last_name= "Martinez", dojo= third_dojo)
+    Ninja.objects.create(first_name= "Amber", last_name= "Martinez", dojo= third_dojo)
+
+Recupera todos los ninjas del primer dojo
+    firt_dojo.ninjas.all()
+
+Recupera todos los ninjas del ultimo dojo
+    last_dojo= Dojo.objects.last()
+    last_dojo.ninjas.all()
+
+Recupera el último dojo del ninja
+    last_ninja= Ninja.objects.last().dojo
+
+Crea un nuevo dojo
+    Dojo.objects.create(name= "Go", city= "San Francisco", state= "CA", desc= "Best place around")
+
