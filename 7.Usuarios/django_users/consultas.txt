@@ -1,0 +1,35 @@
+Crear usuarios:
+    User.objects.create(first_name="Apolo",last_name="Schmickler",email_adress="apolo@gmail.com",age="3")
+    User.objects.create(first_name="Ares",last_name="Weber",email_adress="ares@gmail.com",age="2")
+    User.objects.create(first_name="Micaela",last_name="Morinigo",email_adress="micaela@gmail.com",age="27")
+
+
+Recuperar todos los usuarios:
+    User.objects.all()
+
+
+Recuparar el ultimo usuario:
+    User.objects.last()
+
+
+Recuperar el primer usuario:
+    User.objects.first()
+
+
+Cambie el usuario con id = 3 para que su apellido sea Pancakes:
+    user_modified = User.objects.get(id=3)
+    user_modified.last_name = "Pancakes"
+    user_modified.save()
+
+
+Eliminar el usuario con id = 2 de la base de datos
+    user_to_delete = User.objects.get(id=2)
+    user_to_delete.delete()
+
+
+Obtenga todos los usuarios, ordenados por su nombre
+    User.objects.all().order_by("first_name")
+
+
+Obtén todos los usuarios, ordenados por su nombre en orden descendente
+    User.objects.all().order_by("-first_name")
