@@ -1,0 +1,76 @@
+Crea 5 libros
+    Book.objects.create(title="C Sharp", desc="Cool book about programming")
+    Book.objects.create(title="Java", desc="Not too cool book about programming")
+    Book.objects.create(title="Python", desc="Super mega cool book about programming")
+    Book.objects.create(title="PHP", desc="Good book about programming")
+    Book.objects.create(title="Ruby", desc="Grate book about programming")
+
+Crea 5 autores
+    Author.objects.create(first_name="Jane", last_name="Austen")
+    Author.objects.create(first_name="Emily", last_name="Dickinson")
+    Author.objects.create(first_name="Fyodor", last_name="Dostoevsky")
+    Author.objects.create(first_name="William", last_name="Shakespeare")
+    Author.objects.create(first_name="Lau", last_name="Tzu")
+
+Cambie el nombre del libro de C Sharp a C #
+    title_change = Book.objects.get(title="C Sharp")
+    title_change.title = "C#"
+    title_change.save()
+
+Cambie el nombre del cuarto autor a Bill
+    name_change = Author.objects.get(id=4)
+    name_change.first_name = "Bill"
+    name_change.save()
+
+Asigna el primer autor a los primeros 2 libros
+    first_author = Author.objects.first()
+    first_book = Book.objects.first()
+    second_book = Book.objects.get(id=2)
+    first_author.books.add(first_book)
+    first_author.books.add(second_book)
+
+Asigne el segundo autor a los primeros 3 libros
+    first_book = Book.objects.first()
+    second_book = Book.objects.get(id=2)
+    third_book = Book.objects.get(id=3)
+    author_second = Author.objects.get(id=2)
+    author_second.books.add(first_book)
+    author_second.books.add(second_book)
+    author_second.books.add(third_book)
+
+Asigna el tercer autor a los primeros 4 libros
+    first_book = Book.objects.first()
+    second_book = Book.objects.get(id=2)
+    third_book = Book.objects.get(id=3)
+    fourth_book = Book.objects.get(id=4)
+    author_third = Author.objects.get(id=3)
+    author_third.books.add(first_book)
+    author_third.books.add(second_book)
+    author_third.books.add(third_book)
+    author_third.books.add(fourth_book)
+
+Asigne el cuarto autor a los primeros 5 libros
+    first_book = Book.objects.first()
+    second_book = Book.objects.get(id=2)
+    third_book = Book.objects.get(id=3)
+    fourth_book = Book.objects.get(id=4)
+    fifth_book = Book.objects.get(id=5)
+    author_fourth = Author.objects.get(id=4)
+    author_fourth.books.add(first_book)
+    author_fourth.books.add(second_book)
+    author_fourth.books.add(third_book)
+    author_fourth.books.add(fourth_book)
+    author_fourth.books.add(fifth_book)
+
+Recupera a todos los autores del tercer libro
+    third_book.authors.all()
+
+Agregue el quinto autor como uno de los autores del segundo libro
+    author_fifth = Author.objects.get(id=5)
+    author_fifth.books.add(second_book)
+
+ Encuentra todos los libros de los que el tercer autor es parte
+    author_third.books.all()
+
+Encuentra todos los autores que contribuyeron al quinto libro
+    fifth_book.authors.all()
