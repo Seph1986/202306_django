@@ -1,0 +1,44 @@
+{% extends "../index_base.html" %}
+
+
+{% block form_title %} Author {% endblock %}
+
+{% block form %}
+<input type="hidden" name="hidden" value="author">
+<div class="mb-3">
+    <label for="first_name" class="form-label">First Name</label>
+    <input type="text" class="form-control" id="first_name" name="first_name" required>
+</div>
+<div class="mb-3">
+    <label for="last_name" class="form-label">Last Name</label>
+    <input type="text" class="form-control" id="last_name" name="last_name" required>
+</div>
+<div class="mb-3">
+    <p>Notes</p>
+    <textarea class="form-control" name="notes" id="notes" cols="45" rows="3" placeholder="Insert Notes" required></textarea>
+</div>
+{% endblock %}
+
+{% block list_title %} Authors {% endblock %}
+{% block list %}
+<div class="card p-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for author in authors %}
+            <tr>
+                <td>{{author.id}}</td>
+                <td>{{author.first_name}} {{author.last_name}}</td>
+                <td><a href="{% url 'author_detail' id=author.id %}">View</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

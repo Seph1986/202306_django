@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="container col-8">
+    <div class="row">
+        <div class="col mt-4">
+            <h1>{{author.first_name}} {{author.last_name}}</h1>
+            <h4>ID: {{author.id}}</h4>
+
+            {% if author.notes %}
+            <p>{{author.notes}}</p>
+            {% else %}
+            <p>No notes from this author</p>
+            {% endif %}
+
+            <h4>Books</h4>
+            {% if books|length > 0 %}
+            <ul>
+                {% for book in books %}
+                <li>{{book.title}}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No book found</p>
+            {% endif %}
+            <div class="col-4 mt-4 card p-3">
+                <h3>Add another author</h3>
+                <form action="{% url 'add_book_to_author' id=author.id %}" method="post">
+                    {% csrf_token %}
+                    <select name="book_data" class="form-select">
+                        <option selected>Author to add</option>
+                        {% for book in to_add_books %}
+                        <option value="{{book.id}}">{{book.title}}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn btn-primary mt-4">Add</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

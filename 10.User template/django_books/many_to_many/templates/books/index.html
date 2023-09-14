@@ -1,0 +1,40 @@
+{% extends "../index_base.html" %}
+
+
+{% block form_title %} Book {% endblock %}
+
+{% block form %}
+<input type="hidden" name="hidden" value="book">
+<div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" class="form-control" id="title" name="title" required>
+</div>
+<div class="mb-3">
+    <label for="description" class="form-label">Short Description</label>
+    <input type="text" class="form-control" id="description" name="description" required>
+</div>
+{% endblock %}
+
+{% block list_title %} Books {% endblock %}
+{% block list %}
+<div class="card p-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{book.id}}</td>
+                <td>{{book.title}}</td>
+                <td><a href="{% url 'book_detail' id=book.id %}">View</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

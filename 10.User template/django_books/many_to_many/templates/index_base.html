@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container mt-4 col-8">
+        <div class="row">
+            <div class="col">
+               <h3>Add {% block form_title %} {% endblock %} </h3>
+               <form action="{% url 'data_digest' %}" method="post">
+                {% csrf_token %}
+                {% block form %}
+
+                {% endblock %}
+                <button type="submit" class="btn btn-primary">Add</button>
+              </form>
+            </div>
+            <div class="col">
+                <h3/>{% block list_title %} {% endblock %} List</h3>
+                {% block list %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
